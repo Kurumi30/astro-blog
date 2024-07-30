@@ -5,7 +5,7 @@ description: 'Conheça os principais códigos HTTP e suas funções'
 image: 'https://http.pizza/429.jpg'
 tags: [http, status code]
 category: 'Guides'
-draft: true
+draft: false
 ---
 
 Existem mais de 50 códigos de status HTTP exclusivos em 5 categorias diferentes.
