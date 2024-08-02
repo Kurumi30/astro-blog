@@ -1,12 +1,16 @@
 ---
-
 import { profileConfig } from '../config'
+import { url } from '../utils/url-utils'
 ---
 
 <div class="card-base max-w-[var(--page-width)] min-h-[4.5rem] rounded-b-none mx-auto flex items-center px-6">
     <div class="transition text-50 text-sm">
-        &copy; {new Date().getFullYear()} {profileConfig.name}. Todos os direitos reservados.
+        &copy; {new Date().getFullYear()} {profileConfig.name}. Todos os direitos reservados. /
+        <a href={url('rss.xml')} target="_blank" class="link text-[var(--primary)] font-medium">RSS</a> /
+        <a href={url('sitemap-index.xml')} target="_blank" class="link text-[var(--primary)] font-medium">Sitemap</a>
         <br>
-        Desenvolvido por <a class="link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/Kurumi30">Kurumi30</a>
+        Desenvolvido por
+        <a class="link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+        <a class="link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/Kurumi30">Kurumi30</a>
     </div>
 </div>
