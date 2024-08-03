@@ -1,4 +1,4 @@
-import { toString } from "mdast-util-to-string"
+import { toString } from 'mdast-util-to-string'
 
 export function remarkExcerpt() {
   return (tree, { data }) => {

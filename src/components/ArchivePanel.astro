@@ -31,15 +31,18 @@ if (Array.isArray(categories) && categories.length > 0) {
   )
 }
 
-const groups: { year: number, posts: typeof posts }[] = function () {
-  const groupedPosts = posts.reduce((grouped: { [year: number]: typeof posts }, post) => {
-    const year = post.data.published.getFullYear()
-    if (!grouped[year]) {
-      grouped[year] = []
-    }
-    grouped[year].push(post)
-    return grouped
-  }, {})
+const groups: { year: number; posts: typeof posts }[] = (function () {
+  const groupedPosts = posts.reduce(
+    (grouped: { [year: number]: typeof posts }, post) => {
+      const year = post.data.published.getFullYear()
+      if (!grouped[year]) {
+        grouped[year] = []
+      }
+      grouped[year].push(post)
+      return grouped
+    },
+    {},
+  )
 
   // convert the object to an array
   const groupedPostsArray = Object.keys(groupedPosts).map(key => ({
@@ -49,15 +52,15 @@ const groups: { year: number, posts: typeof posts }[] = function () {
 
   // sort years by latest first
   groupedPostsArray.sort((a, b) => Number(b.year) - Number(a.year))
-  
+
   return groupedPostsArray
-}()
+})()
 
 function formatDate(date: Date) {
   // const month = (date.getMonth() + 1).toString().padStart(2, '0')
   // const day = date.getDate().toString().padStart(2, '0')
   const [day, month] = formatDateToDDMMYYYY(date).split('-')
-  
+
   return `${day}-${month}`
 }
 
