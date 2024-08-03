@@ -8,6 +8,7 @@ import rehypeKatex from "rehype-katex"
 import rehypeSlug from "rehype-slug"
 import remarkMath from "remark-math"
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs"
+import { remarkExcerpt } from "./src/plugins/remark-excerpt.js"
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs"
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs"
 import remarkDirective from "remark-directive" /* Handle directives */
@@ -67,7 +68,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode],
+    remarkPlugins: [remarkMath, remarkReadingTime, remarkExcerpt, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode],
     rehypePlugins: [
       rehypeKatex,
       rehypeSlug,
