@@ -1,7 +1,7 @@
 import { siteConfig } from '@/config'
 import rss from '@astrojs/rss'
-import MarkdownIt from 'markdown-it'
 import { getSortedPosts } from '@utils/content-utils'
+import MarkdownIt from 'markdown-it'
 import sanitizeHtml from 'sanitize-html'
 const parser = new MarkdownIt()
 

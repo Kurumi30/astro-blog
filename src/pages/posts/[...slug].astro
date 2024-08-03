@@ -2,18 +2,18 @@
 import path from 'path'
 import { getCollection } from 'astro:content'
 import Comment from '@components/Comment.astro'
+import PostMetadata from '@components/PostMeta.astro'
+import ImageWrapper from '@components/misc/ImageWrapper.astro'
 import License from '@components/misc/License.astro'
 import Markdown from '@components/misc/Markdown.astro'
 import I18nKey from '@i18n/i18nKey'
 import { i18n } from '@i18n/translation'
 import MainGridLayout from '@layouts/MainGridLayout.astro'
+import { formatDateToDDMMYYYY } from '@utils/date-utils'
 import { getDir, getPostUrlBySlug } from '@utils/url-utils'
 import { Icon } from 'astro-icon/components'
 import { licenseConfig } from 'src/config'
-import PostMetadata from '@components/PostMeta.astro'
-import ImageWrapper from '@components/misc/ImageWrapper.astro'
 import { profileConfig } from '../../config'
-import { formatDateToDDMMYYYY } from '@utils/date-utils'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('posts', ({ data }) => {

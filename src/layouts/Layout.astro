@@ -14,8 +14,8 @@ import {
   LIGHT_MODE,
 } from '@constants/constants'
 import { defaultFavicons } from '@constants/icon'
-import { type Favicon } from '../types/config'
-import { pathsEqual, url } from '@utils/url-utils'
+import { url, pathsEqual } from '@utils/url-utils'
+import type { Favicon } from '../types/config'
 
 interface Props {
   title?: string
@@ -314,7 +314,7 @@ const setup = () => {
 
 	window.swup.hooks.on('content:replace', initCustomScrollbar)
 
-	window.swup.hooks.on('visit:start', visit => {
+	window.swup.hooks.on('visit:start', (visit: { to: { url: string } }) => {
 		// change banner height immediately when a link is clicked
 		const bodyElement = document.querySelector('body')
 

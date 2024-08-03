@@ -47,12 +47,14 @@ const className = Astro.props.class
       wrapper.appendChild(codeBlock);
       wrapper.appendChild(copyButton);
 
-      let timeout
+      let timeout: ReturnType<typeof setTimeout>
 
       copyButton.addEventListener("click", async () => {
         if (timeout) clearTimeout(timeout);
 
         let text = codeBlock?.querySelector("code")?.innerText;
+
+        if (text === undefined) return
 
         await navigator.clipboard.writeText(text);
 
