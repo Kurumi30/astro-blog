@@ -1,30 +1,38 @@
 ---
-import { siteConfig } from '@/config'
-
-const siteLang = siteConfig.lang.replace('_', '-')
+import MainGridLayout from "@layouts/MainGridLayout.astro"
+import { url } from "@utils/url-utils"
+import { Icon } from "astro-icon/components"
 ---
 
-<!DOCTYPE html>
-<html lang={siteLang}>
+<MainGridLayout>
+  <div class="w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-9 py-6 relative w-full text-black/75 dark:text-white/75">
+      <div class="flex items-center gap-4">
+        <h1 class="text-[5rem] font-bold">404</h1>
+        
+        <p class="text-[2rem]">Não encontrado</p>
+      </div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:site_name" content="alihamzakamboh.com">
-  <meta property="og:title" content="Ali Hamza Kamboh">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="">
-  <meta name="description" content="">
-  <title>404 Error !</title>
-</head>
+      <a href={url("/")} class:list={["font-bold overflow-hidden active:scale-95"]}>
+        <div class="btn-card max-w-fit rounded-2xl h-[3.75rem] px-4 flex items-center justify-start gap-2">
+          <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap text-black/75 dark:text-white/75">
+            Retornar para a página inicial
+          </div>
+
+          <Icon name="material-symbols:chevron-right-rounded" class="text-[1.75rem] text-black/75 dark:text-white/75" />
+        </div>
+      </a>
+    </div>
+  </div>
+</MainGridLayout>
+
+<!-- <!DOCTYPE html>
 
 <body>
   <main class="container">
     <p>Oops! The page you are looking for could not be found.</p>
 
-    <a href="/">Go back to homepage</a>
+    <a href="/" rel="noopener noreferrer">Go back to homepage</a>
   </main>
 </body>
 
@@ -287,4 +295,4 @@ const siteLang = siteConfig.lang.replace('_', '-')
     box-shadow: -0px -0px 10px #8983F7, -0px -0px 30px #8983F7;
     color: #fff;
   }
-</style>
+</style> -->
