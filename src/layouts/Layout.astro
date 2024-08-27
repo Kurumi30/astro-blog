@@ -21,9 +21,10 @@ interface Props {
   title?: string
   banner?: string
   description?: string
+	lang?: string
 }
 
-let { title, banner, description } = Astro.props
+let { title, banner, description, lang } = Astro.props
 
 const isHomePage = pathsEqual(Astro.url.pathname, url('/'))
 
@@ -49,7 +50,11 @@ if (title) {
 const favicons: Favicon[] =
   siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons
 
-const siteLang = siteConfig.lang.replace('_', '-')
+// const siteLang = siteConfig.lang.replace('_', '-')
+
+if (!lang) lang = `${siteConfig.lang}`
+
+const siteLang = lang.replace('_', '-')
 ---
 
 <!DOCTYPE html>
