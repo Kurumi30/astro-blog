@@ -45,7 +45,7 @@ image: ''
 tags: []
 category: ''
 draft: true
-language: ''
+lang: ''
 ---
 `
 
