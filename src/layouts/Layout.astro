@@ -22,9 +22,10 @@ interface Props {
   banner?: string
   description?: string
 	lang?: string
+	setOGTypeArticle?: boolean
 }
 
-let { title, banner, description, lang } = Astro.props
+let { title, banner, description, lang, setOGTypeArticle } = Astro.props
 
 const isHomePage = pathsEqual(Astro.url.pathname, url('/'))
 
@@ -77,6 +78,11 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || 'cente
 		<meta property="og:url" content={Astro.url}>
 		<meta property="og:title" content={pageTitle}>
 		<meta property="og:description" content={description || pageTitle}>
+		{setOGTypeArticle ? (
+			<meta property="og:type" content="article">
+		) : (
+			<meta property="og:type" content="website">
+		)}
 
 		<meta name="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content={Astro.url}>
@@ -226,6 +232,8 @@ import { pathsEqual, url } from "../utils/url-utils"
 // 	}
 // }
 
+const bannerEnabled = !!document.getElementById('banner-wrapper')
+
 function setClickOutsideToClose(panel: string, ignores: string[]) {
 	document.addEventListener("click", event => {
 		let panelDom = document.getElementById(panel);
@@ -235,10 +243,12 @@ function setClickOutsideToClose(panel: string, ignores: string[]) {
 
 		for (let ig of ignores) {
 			let ie = document.getElementById(ig)
+
 			if (ie == tDom || (ie?.contains(tDom))) {
 				return;
 			}
 		}
+		
 		panelDom!.classList.add("float-panel-closed");
 	});
 }
@@ -335,6 +345,8 @@ const setup = () => {
 	window.swup.hooks.on('link:click', () => {
 		document.documentElement.style.setProperty('--content-delay', '0ms')
 
+		if (!bannerEnabled) return
+
 		// prevent elements from overlapping the navbar
 		let threshold = window.innerHeight * 0.30 - 72 - 16
 		let navbar = document.getElementById('navbar-wrapper')
@@ -385,8 +397,6 @@ if (window?.swup?.hooks) {
 let backToTopBtn = document.getElementById('back-to-top-btn')
 let navbar = document.getElementById('navbar-wrapper')
 
-const bannerEnable = !!document.getElementById('banner-wrapper')
-
 function scrollFunction() {
 	if (backToTopBtn) {
 		if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
@@ -396,7 +406,7 @@ function scrollFunction() {
 		}
 	}
 
-	if (!bannerEnable) return
+	if (!bannerEnabled) return
 
 	if (navbar) {
 		let threshold = window.innerHeight * 0.30 - 72 - 16
