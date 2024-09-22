@@ -31,13 +31,16 @@ if (isLocal) {
   const files = import.meta.glob<ImageMetadata>('../../**', {
     import: 'default',
   })
+  
   const normalizedPath = path
     .normalize(path.join('../../', basePath, src))
     .replace(/\\/g, '/')
 
-  img = await files[normalizedPath]()
+  const file = files[normalizedPath]
 
-  if (!img) console.error(`No image found for path ${normalizedPath}`)
+  if (!file) console.error(`\n[ERROR] Image file not found: ${normalizedPath.replace('../../', 'src/')}`)
+
+  img = await file()
 }
 
 const imageClass = 'w-full h-full object-cover'
