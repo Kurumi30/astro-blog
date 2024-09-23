@@ -5,7 +5,7 @@ description: 'Aprenda a usar o Git e o GitHub para gerenciar seus projetos'
 image: 'https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Git/Gestella_from_eleceed_Aprendiendo_Git_Github.png?raw=true'
 tags: [git, github]
 category: 'Guides'
-draft: true
+draft: false
 lang: ''
 ---
 
