@@ -97,7 +97,17 @@ git status
 
 # Removendo alterações
 
-Terminar depois...
+Quando você quer remover alguma alteração feita em um arquivo ou tirar a atenção do Git sobre ele, use o comando:
+
+```bash
+git rm --cached meu-arquivo.txt
+```
+
+:::note
+Outros usos:
+- `git rm <file>` deleta um arquivo que não esteja no índice.
+- `git rm -f <file>` remove do index e do repositório.
+:::
 
 > Fonte da imagem do post
 > - [Anime girls holding programming books](https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Git/Gestella_from_eleceed_Aprendiendo_Git_Github.png)
