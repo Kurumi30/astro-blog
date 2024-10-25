@@ -5,14 +5,13 @@ import { url } from '../utils/url-utils'
 
 <div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div>
 <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6">
-    <div class="transition text-50 text-sm">
+    <div class="transition text-50 text-sm text-center">
         &copy; {new Date().getFullYear()} {profileConfig.name}. Todos os direitos reservados. /
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a>
-    </div>
-    <div class="transition text-50 text-sm">
+        <br>
         Desenvolvido por
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Kurumi30</a>
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/Kurumi30/astro-blog">Kurumi30</a>
     </div>
 </div>
