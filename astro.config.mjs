@@ -19,7 +19,7 @@ import swup from '@swup/astro'
 import sitemap from '@astrojs/sitemap'
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js"
 
-const oklchToHex = (str) => {
+const oklchToHex = str => {
   const DEFAULT_HUE = 250
   const regex = /-?\d+(\.\d+)?/g
   const matches = str.string.match(regex)
@@ -40,7 +40,7 @@ export default defineConfig({
     swup({
       theme: false,
       animationClass: 'transition-swup-',
-      containers: ['main'],
+      containers: ['main', '#toc'],
       smoothScrolling: true,
       cache: true,
       preload: true,

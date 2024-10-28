@@ -21,6 +21,11 @@ export type SiteConfig = {
     }
   }
 
+  toc: {
+    enable: boolean
+    depth: 1 | 2 | 3
+  }
+
   favicon: Favicon[]
 }
 
