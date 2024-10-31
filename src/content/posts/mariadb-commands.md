@@ -9,6 +9,10 @@ draft: false
 lang: ''
 ---
 
+:::note
+Você consegue rodar os comandos no site [sqliteonline](https://sqliteonline.com/)
+:::
+
 ## Criar uma tabela
 
 ```sql
@@ -264,6 +268,26 @@ SELECT estado, COUNT(*)
 -- O comando acima seleciona o campo estado e o total de registros da tabela Clientes,
 -- agrupando os registros pelo campo estado,
 -- filtrando os registros onde o total de registros é maior que 10.
+```
+
+## Apagar uma tabela fisicamente
+
+```sql
+DROP TABLE Clientes;
+```
+
+## Apagar *TODOS* os dados de uma tabela
+
+```sql
+TRUNCATE Clientes;
+```
+
+## Atualizar um registro
+
+```sql
+UPDATE Clientes
+  SET idade = 20, endereco = "Rua das Flores, 123"
+  WHERE id = 1;
 ```
 
 ### Referências
