@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
     },
   },
   toc: {
-    enable: false,
+    enable: true,
     depth: 2,
   },
   favicon: [

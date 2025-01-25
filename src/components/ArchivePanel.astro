@@ -35,10 +35,11 @@ const groups: { year: number; posts: typeof posts }[] = (() => {
   const groupedPosts = posts.reduce(
     (grouped: { [year: number]: typeof posts }, post) => {
       const year = post.data.published.getFullYear()
-      if (!grouped[year]) {
-        grouped[year] = []
-      }
+
+      if (!grouped[year]) grouped[year] = []
+
       grouped[year].push(post)
+
       return grouped
     },
     {},
@@ -57,8 +58,6 @@ const groups: { year: number; posts: typeof posts }[] = (() => {
 })()
 
 function formatDate(date: Date) {
-  // const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  // const day = date.getDate().toString().padStart(2, '0')
   const [day, month] = formatDateToDDMMYYYY(date).split('-')
 
   return `${day}-${month}`

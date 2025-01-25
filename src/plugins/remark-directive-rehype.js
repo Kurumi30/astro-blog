@@ -11,7 +11,9 @@ export function parseDirectiveNode() {
         node.type === 'textDirective'
       ) {
         const data = node.data || (node.data = {})
+
         node.attributes = node.attributes || {}
+
         if (
           node.children.length > 0 &&
           node.children[0].data &&
@@ -20,6 +22,7 @@ export function parseDirectiveNode() {
           // Add a flag to the node to indicate that it has a directive label
           node.attributes['has-directive-label'] = true
         }
+        
         const hast = h(node.name, node.attributes)
 
         data.hName = hast.tagName

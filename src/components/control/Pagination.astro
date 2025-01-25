@@ -1,7 +1,7 @@
 ---
-import { url } from '@utils/url-utils'
 import type { Page } from 'astro'
 import { Icon } from 'astro-icon/components'
+import { url } from '@utils/url-utils'
 interface Props {
   page: Page
   class?: string
@@ -9,11 +9,8 @@ interface Props {
 }
 
 const { page, style } = Astro.props
-
 const HIDDEN = -1
-
 const className = Astro.props.class
-
 const ADJ_DIST = 2
 const VISIBLE = ADJ_DIST * 2 + 1
 
@@ -62,6 +59,7 @@ const getPageUrl = (p: number) => {
         {pages.map((p) => {
             if (p == HIDDEN)
                 return <Icon name="material-symbols:more-horiz" class="mx-1"/>;
+                
             if (p == page.currentPage)
                 return <div class="h-11 w-11 rounded-lg bg-[var(--primary)] flex items-center justify-center
                     font-bold text-white dark:text-black/70"

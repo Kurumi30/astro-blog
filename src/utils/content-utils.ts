@@ -11,6 +11,7 @@ export async function getSortedPosts(): Promise<{ body: string, data: BlogPostDa
   const sorted = allBlogPosts.sort((a: { data: BlogPostData }, b: { data: BlogPostData }) => {
     const dateA = new Date(a.data.published)
     const dateB = new Date(b.data.published)
+
     return dateA > dateB ? -1 : 1
   })
 
@@ -18,6 +19,7 @@ export async function getSortedPosts(): Promise<{ body: string, data: BlogPostDa
     sorted[i].data.nextSlug = sorted[i - 1].slug
     sorted[i].data.nextTitle = sorted[i - 1].data.title
   }
+
   for (let i = 0; i < sorted.length - 1; i++) {
     sorted[i].data.prevSlug = sorted[i + 1].slug
     sorted[i].data.prevTitle = sorted[i + 1].data.title
@@ -37,14 +39,14 @@ export async function getTagList(): Promise<Tag[]> {
   })
 
   const countMap: { [key: string]: number } = {}
-  allBlogPosts.map(post => {
+  allBlogPosts.map((post: { data: { tags: string[] } }) => {
     post.data.tags.map((tag: string) => {
       if (!countMap[tag]) countMap[tag] = 0
+
       countMap[tag]++
     })
   })
 
-  // sort tags
   const keys: string[] = Object.keys(countMap).sort((a, b) => {
     return a.toLowerCase().localeCompare(b.toLowerCase())
   })
@@ -62,7 +64,7 @@ export async function getCategoryList(): Promise<Category[]> {
     return import.meta.env.PROD ? data.draft !== true : true
   })
   const count: { [key: string]: number } = {}
-  allBlogPosts.map(post => {
+  allBlogPosts.map((post: { data: { category: string | number } }) => {
     if (!post.data.category) {
       const ucKey = i18n(I18nKey.uncategorized)
       
@@ -80,8 +82,10 @@ export async function getCategoryList(): Promise<Category[]> {
   })
 
   const ret: Category[] = []
+  
   for (const c of lst) {
     ret.push({ name: c, count: count[c] })
   }
+
   return ret
 }
