@@ -20,9 +20,9 @@ export const siteConfig: SiteConfig = {
     src: 'assets/images/demo-banner.jpg', // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     position: 'center', // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
     credit: {
-      enable: false,
-      text: '',
-      url: '',
+      enable: true,
+      text: 'Genshin Impact Web Event',
+      url: 'https://www.hoyolab.com/article/29230737',
     },
   },
   toc: {
