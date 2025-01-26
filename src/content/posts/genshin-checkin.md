@@ -3,7 +3,7 @@ title: Como fazer check-in diário no Genshin Impact usando Node.js
 published: 2025-01-26
 description: E se usarmos a programação para fazer o check-in diário no Genshin Impact?
 image: https://upload-os-bbs.hoyolab.com/upload/2025/01/26/423875824/babd6d552ea0572ae90483188c4f6a7e_5972990152846646708.gif
-tags: [Genshin, Nodejs]
+tags: [genshin, nodejs, hoyolab, mihoyo]
 category: Games
 draft: false
 lang: pt-br
