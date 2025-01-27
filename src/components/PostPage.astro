@@ -21,6 +21,7 @@ const interval = 50;
           tags: string[];
           category: string;
           published: Date;
+          updated?: Date;
           image: string;
           description: string;
         };
@@ -33,6 +34,7 @@ const interval = 50;
             tags={entry.data.tags}
             category={entry.data.category}
             published={entry.data.published}
+            updated={entry.data.updated}
             url={getPostUrlBySlug(entry.slug)}
             image={entry.data.image}
             description={entry.data.description}
