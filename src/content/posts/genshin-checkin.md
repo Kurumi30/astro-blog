@@ -309,6 +309,8 @@ npm start
 
 Você pode adicionar um cronjob para rodar o script diariamente. Para isso, você pode usar o [cron-job.org](https://cron-job.org/).
 
+> Cronjob: é um agendador de tarefas que executa comandos em horários específicos.
+
 # 5. Observações
 
 O intuito deste tutorial é mostrar como fazer o check-in sem a necessidade de instalar dependências. Mas, se você quiser, pode usar pacotes para facilitar o desenvolvimento.
