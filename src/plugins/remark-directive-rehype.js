@@ -22,7 +22,7 @@ export function parseDirectiveNode() {
           // Add a flag to the node to indicate that it has a directive label
           node.attributes['has-directive-label'] = true
         }
-        
+
         const hast = h(node.name, node.attributes)
 
         data.hName = hast.tagName

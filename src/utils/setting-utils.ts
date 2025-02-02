@@ -15,7 +15,7 @@ export function getDefaultHue(): number {
 
 export function getHue(): number {
   const stored = localStorage.getItem('hue')
-  
+
   return stored ? Number.parseInt(stored) : getDefaultHue()
 }
 
