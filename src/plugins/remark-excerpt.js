@@ -1,4 +1,4 @@
-import { toString } from 'mdast-util-to-string'
+import { toString as mdastToString } from 'mdast-util-to-string'
 
 export function remarkExcerpt() {
   return (tree, { data }) => {
@@ -7,7 +7,7 @@ export function remarkExcerpt() {
     for (const node of tree.children) {
       if (node.type !== 'paragraph') continue
 
-      excerpt = toString(node)
+      excerpt = mdastToString(node)
 
       break
     }
