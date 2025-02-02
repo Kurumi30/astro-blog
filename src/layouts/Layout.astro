@@ -84,7 +84,7 @@ const bannerOffset =
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description || pageTitle} />
-		<!-- <meta property="og:image" content={banner} /> -->
+		<meta property="og:image" content={siteConfig.banner.src} />
 		{
 			setOGTypeArticle ? (
 				<meta property="og:type" content="article" />
@@ -196,7 +196,7 @@ const bannerOffset =
 	>
 		<ConfigCarrier />
 
-			<slot />
+		<slot />
 
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
@@ -372,7 +372,7 @@ const bannerOffset =
 			},
 		);
 
-		const preElements = document.querySelectorAll("pre")
+		const preElements = document.querySelectorAll("pre");
 
 		preElements.forEach(ele => {
 			OverlayScrollbars(ele, {
@@ -385,13 +385,15 @@ const bannerOffset =
 			});
 		});
 
-		const katexElements = document.querySelectorAll(".katex-display") as NodeListOf<HTMLElement>;
+		const katexElements = document.querySelectorAll(
+			".katex-display",
+		) as NodeListOf<HTMLElement>;
 
 		katexElements.forEach(ele => {
 			OverlayScrollbars(ele, {
 				scrollbars: {
 					theme: "scrollbar-base scrollbar-auto py-1",
-				}
+				},
 			});
 		});
 	}
