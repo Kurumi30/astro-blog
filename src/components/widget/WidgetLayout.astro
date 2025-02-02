@@ -10,7 +10,7 @@ interface Props {
   class?: string;
   style?: string;
 }
-// const props = Astro.props;
+
 const { id, name, isCollapsed, collapsedHeight, style } = Astro.props;
 const className = Astro.props.class;
 ---
@@ -35,7 +35,7 @@ const className = Astro.props.class;
       { collapsed: isCollapsed },
     ]}
   >
-    <slot></slot>
+    <slot />
   </div>
   {
     isCollapsed && (
@@ -67,7 +67,7 @@ const className = Astro.props.class;
       const id = this.dataset.id;
       const btn = this.querySelector(".expand-btn");
       const wrapper = this.querySelector(`#${id}`);
-      
+
       btn!.addEventListener("click", () => {
         wrapper!.classList.remove("collapsed");
         btn!.classList.add("hidden");
@@ -75,5 +75,6 @@ const className = Astro.props.class;
     }
   }
 
-  customElements.define("widget-layout", WidgetLayout);
+  if (!customElements.get("widget-layout"))
+    customElements.define("widget-layout", WidgetLayout);
 </script>
