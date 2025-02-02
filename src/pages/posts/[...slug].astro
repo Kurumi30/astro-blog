@@ -86,7 +86,12 @@ const jsonLd = {
           </div>
           <div class="text-sm">
             {remarkPluginFrontmatter.words}
-            {" " + i18n(I18nKey.wordsCount)}
+            {" "}
+            {
+              remarkPluginFrontmatter.words === 1
+                ? i18n(I18nKey.wordCount)
+                : i18n(I18nKey.wordsCount)
+            }
           </div>
         </div>
         <div class="flex flex-row items-center">
@@ -97,11 +102,11 @@ const jsonLd = {
           </div>
           <div class="text-sm">
             {remarkPluginFrontmatter.minutes}
+            {" "}
             {
-              " " +
-                (remarkPluginFrontmatter.minutes === 1
-                  ? i18n(I18nKey.minuteCount)
-                  : i18n(I18nKey.minutesCount))
+              remarkPluginFrontmatter.minutes === 1
+                ? i18n(I18nKey.minuteCount)
+                : i18n(I18nKey.minutesCount)
             }
           </div>
         </div>

@@ -101,16 +101,21 @@ const { remarkPluginFrontmatter } = await entry.render();
     <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
       <div>
         {remarkPluginFrontmatter.words}
-        {" " + i18n(I18nKey.wordsCount)}
+        {" "}
+        {
+          remarkPluginFrontmatter.words === 1
+            ? i18n(I18nKey.wordCount)
+            : i18n(I18nKey.wordsCount)
+        }
       </div>
       <div>|</div>
       <div>
         {remarkPluginFrontmatter.minutes}
+        {" "}
         {
-          " " +
-            (remarkPluginFrontmatter.minutes === 1
-              ? i18n(I18nKey.minuteCount)
-              : i18n(I18nKey.minutesCount))
+          remarkPluginFrontmatter.minutes === 1
+            ? i18n(I18nKey.minuteCount)
+            : i18n(I18nKey.minutesCount)
         }
       </div>
     </div>
@@ -132,14 +137,14 @@ const { remarkPluginFrontmatter } = await entry.render();
           <Icon
             name="material-symbols:chevron-right-rounded"
             class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl"
-          ></Icon>
+          />
         </div>
         <ImageWrapper
           src={image}
           basePath={path.join("content/posts/", getDir(entry.id))}
           alt="Cover Image of the Post"
           class="w-full h-full"
-        ></ImageWrapper>
+        />
       </a>
     )
   }
@@ -157,7 +162,7 @@ const { remarkPluginFrontmatter } = await entry.render();
         <Icon
           name="material-symbols:chevron-right-rounded"
           class="transition text-[var(--primary)] text-4xl mx-auto"
-        ></Icon>
+        />
       </a>
     )
   }
