@@ -23,25 +23,30 @@ const config = profileConfig;
         class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-5xl"
       />
     </div>
+
     <ImageWrapper
       src={config.avatar || ""}
       alt="Profile Image of the Author"
       class="mx-auto lg:w-full h-full lg:mt-0"
     />
   </a>
+
   <div class="px-2">
     <div
       class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition"
     >
       {config.name}
     </div>
+
     <div
       class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"
     >
     </div>
+
     <div class="text-center text-neutral-400 mb-2.5 transition">
       {config.bio}
     </div>
+    
     <div class="flex gap-2 justify-center mb-1">
       {
         config.links.length > 1 &&

@@ -2,6 +2,7 @@
 import type { Page } from 'astro'
 import { Icon } from 'astro-icon/components'
 import { url } from '@utils/url-utils'
+
 interface Props {
   page: Page
   class?: string
@@ -16,26 +17,31 @@ const VISIBLE = ADJ_DIST * 2 + 1
 
 // for test
 let count = 1
-let l = page.currentPage,
-  r = page.currentPage
+let l = page.currentPage
+let r = page.currentPage
+
 while (0 < l - 1 && r + 1 <= page.lastPage && count + 2 <= VISIBLE) {
   count += 2
   l--
   r++
 }
+
 while (0 < l - 1 && count < VISIBLE) {
   count++
   l--
 }
+
 while (r + 1 <= page.lastPage && count < VISIBLE) {
   count++
   r++
 }
 
 const pages: number[] = []
+
 if (l > 1) pages.push(1)
 if (l == 3) pages.push(2)
 if (l > 3) pages.push(HIDDEN)
+
 for (let i = l; i <= r; i++) pages.push(i)
 if (r < page.lastPage - 2) pages.push(HIDDEN)
 if (r == page.lastPage - 2) pages.push(page.lastPage - 1)
@@ -43,6 +49,7 @@ if (r < page.lastPage) pages.push(page.lastPage)
 
 const getPageUrl = (p: number) => {
   if (p == 1) return '/'
+
   return `/${p}/`
 }
 ---
@@ -55,8 +62,11 @@ const getPageUrl = (p: number) => {
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
     </a>
-    <div class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold">
-        {pages.map((p) => {
+
+    <div
+      class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold"
+    >
+        {pages.map(p => {
             if (p == HIDDEN)
                 return <Icon name="material-symbols:more-horiz" class="mx-1"/>;
                 
@@ -66,11 +76,13 @@ const getPageUrl = (p: number) => {
                 >
                     {p}
                 </div>
+
             return <a href={url(getPageUrl(p))} aria-label=`Page ${p}`
                 class="btn-card w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85]"
             >{p}</a>
         })}
     </div>
+    
     <a href={url(page.url.next || "")} aria-label={page.url.next ? "Next Page" : null}
        class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
            {"disabled": page.url.next == undefined}

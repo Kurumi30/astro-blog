@@ -1,10 +1,11 @@
 <script lang="ts">
+import Icon from '@iconify/svelte'
 import I18nKey from '@i18n/i18nKey'
 import { i18n } from '@i18n/translation'
-    import Icon from '@iconify/svelte';
 import { getDefaultHue, getHue, setHue } from '@utils/setting-utils'
 
 let hue = getHue()
+
 const defaultHue = getDefaultHue()
 
 function resetHue() {
@@ -23,26 +24,43 @@ $: if (hue || hue === 0) {
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
             {i18n(I18nKey.themeColor)}
-            <button aria-label="Reset to Default" class="btn-regular w-7 h-7 rounded-md  active:scale-90"
-                    class:opacity-0={hue === defaultHue} class:pointer-events-none={hue === defaultHue} on:click={resetHue}>
+            <button
+              aria-label="Reset to Default"
+              class="btn-regular w-7 h-7 rounded-md  active:scale-90"
+              class:opacity-0={hue === defaultHue}
+              class:pointer-events-none={hue === defaultHue}
+              on:click={resetHue}
+            >
                 <div class="text-[var(--btn-content)]">
                      <Icon icon="fa6-solid:arrow-rotate-left" class="text-[0.875rem]"></Icon>
                 </div>
             </button>
         </div>
+
         <div class="flex gap-1">
-            <div id="hueValue" class="transition bg-[var(--btn-regular-bg)] w-10 h-7 rounded-md flex justify-center
-            font-bold text-sm items-center text-[var(--btn-content)]">
+            <div
+              id="hueValue"
+              class="transition bg-[var(--btn-regular-bg)] w-10 h-7 rounded-md flex justify-center font-bold text-sm items-center text-[var(--btn-content)]"
+            >
                 {hue}
             </div>
         </div>
     </div>
+
     <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none">
-        <input aria-label={i18n(I18nKey.themeColor)} type="range" min="0" max="360" bind:value={hue}
-               class="slider" id="colorSlider" step="5" style="width: 100%;">
+        <input
+          aria-label={i18n(I18nKey.themeColor)}
+          type="range"
+          min="0"
+          max="360"
+          bind:value={hue}
+          class="slider"
+          id="colorSlider"
+          step="5"
+          style="width: 100%;"
+        >
     </div>
 </div>
-
 
 <style lang="stylus">
   #display-setting

@@ -17,11 +17,10 @@ const links = Astro.props.links;
   ]}
 >
   {
-    links.map((link) => (
+    links.map(link => (
       <a
         href={link.external ? link.url : url(link.url)}
-        class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
-            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
+        class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
         target={link.external ? "_blank" : null}
       >
         <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]">
