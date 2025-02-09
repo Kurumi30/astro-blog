@@ -35,12 +35,6 @@ ALTER TABLE Clientes
   INT AUTO_INCREMENT PRIMARY KEY;
 ```
 
-## Apagar uma tabela
-
-```sql
-DROP TABLE Clientes;
-```
-
 ## Apagar um campo (coluna)
 
 ```sql
