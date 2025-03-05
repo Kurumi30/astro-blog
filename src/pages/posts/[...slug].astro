@@ -30,7 +30,6 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
