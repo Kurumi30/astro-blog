@@ -37,6 +37,10 @@ if (fs.existsSync(fullPath)) {
   process.exit(1)
 }
 
+const dirPath = path.dirname(fullPath)
+
+if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true })
+
 const content = `---
 title: ${args[0]}
 published: ${getDate()}
