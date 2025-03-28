@@ -31,12 +31,6 @@ const className = Astro.props.class;
 
   observer.observe(document.body, { childList: true, subtree: true });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    addPreCopyButton();
-
-    // handleExternalLinks();
-  });
-
   function addPreCopyButton() {
     let codeBlocks = Array.from(document.querySelectorAll("pre"));
 
