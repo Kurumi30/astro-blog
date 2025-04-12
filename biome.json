@@ -1,73 +1,43 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "extends": [],
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
   "files": {
-    "ignoreUnknown": true,
-    "ignore": ["node_modules", "dist", "build"]
+    "ignoreUnknown": false,
+    "ignore": ["src/**/*.css","src/public/**/*", "dist/**/*", "node_modules/**/*"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab"
   },
   "organizeImports": {
     "enabled": true
   },
-  "formatter": {
+  "linter": {
     "enabled": true,
-    "formatWithErrors": false,
-    "ignore": [
-      "src/config.ts"
-    ],
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 80
+    "rules": {
+      "recommended": true
+    }
   },
   "javascript": {
-    "parser": {
-      "unsafeParameterDecoratorsEnabled": true
-    },
     "formatter": {
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "single",
-      "trailingCommas": "all",
-      "semicolons": "asNeeded",
-      "arrowParentheses": "asNeeded"
+      "quoteStyle": "double"
     }
   },
-  "json": {
-    "parser": {
-      "allowComments": true
-    },
-    "formatter": {
-      "enabled": true,
-      "indentStyle": "space",
-      "indentWidth": 2,
-      "lineWidth": 80
-    }
-  },
-  "linter": {
-    "ignore": [],
-    "rules": {
-      "a11y": {
-        "recommended": true
-      },
-      "complexity": {
-        "recommended": true
-      },
-      "correctness": {
-        "recommended": true
-      },
-      "performance": {
-        "recommended": true
-      },
-      "security": {
-        "recommended": true
-      },
-      "style": {
-        "recommended": true
-      },
-      "suspicious": {
-        "recommended": true
-      },
-      "nursery": {
-        "recommended": true
+  "overrides": [
+    {
+      "include": ["*.svelte", "*.astro", "*.vue"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          }
+        }
       }
     }
-  }
+  ]
 }
