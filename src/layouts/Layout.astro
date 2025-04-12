@@ -261,6 +261,7 @@ const bannerOffset =
 		MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
 		PAGE_WIDTH,
 	} from "../constants/constants";
+	import { siteConfig } from "../config"
 
 	/* Preload fonts */
 	// (async function() {
@@ -399,10 +400,12 @@ const bannerOffset =
 	}
 
 	function showBanner() {
+		if (!siteConfig.banner.enable) return
+
 		const banner = document.getElementById("banner");
 
 		if (!banner) {
-			console.error("Failed to find the banner element");
+			console.error("Banner element not found");
 
 			return;
 		}
