@@ -32,7 +32,7 @@ export function GithubCardComponent(properties, children) {
     'Waiting...',
   )
 
-  const nTitle = h(`div`, { class: 'gc-titlebar' }, [
+  const nTitle = h('div', { class: 'gc-titlebar' }, [
     h('div', { class: 'gc-titlebar-left' }, [
       h('div', { class: 'gc-owner' }, [
         nAvatar,
@@ -59,11 +59,7 @@ export function GithubCardComponent(properties, children) {
     { type: 'text/javascript', defer: true },
     `
       fetch('https://api.github.com/repos/${repo}', { referrerPolicy: "no-referrer" }).then(response => response.json()).then(data => {
-        if (data.description) {
-          document.getElementById('${cardUuid}-description').innerText = data.description.replace(/:[a-zA-Z0-9_]+:/g, '');
-        } else {
-         document.getElementById('${cardUuid}-description').innerText = "Description not set."
-        }
+        document.getElementById('${cardUuid}-description').innerText = data.description?.replace(/:[a-zA-Z0-9_]+:/g, '') || "Description not set";
 
         document.getElementById('${cardUuid}-language').innerText = data.language;
         document.getElementById('${cardUuid}-forks').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.forks).replaceAll("\u202f", '');
@@ -71,16 +67,13 @@ export function GithubCardComponent(properties, children) {
         const avatarEl = document.getElementById('${cardUuid}-avatar');
         avatarEl.style.backgroundImage = 'url(' + data.owner.avatar_url + ')';
         avatarEl.style.backgroundColor = 'transparent';
-        if (data.license?.spdx_id) {
-          document.getElementById('${cardUuid}-license').innerText = data.license?.spdx_id
-        } else {
-          document.getElementById('${cardUuid}-license').classList.add = "no-license"
-        };
-          document.getElementById('${cardUuid}-card').classList.remove("fetch-waiting");
-          console.log("[GITHUB-CARD] Loaded card for ${repo} | ${cardUuid}.")
+
+        document.getElementById('${cardUuid}-license').innerText = data.license?.spdx_id || "no-license";
+        document.getElementById('${cardUuid}-card').classList.remove("fetch-waiting");
+        console.log("[GITHUB-CARD] Loaded card for ${repo} | ${cardUuid}.")
       }).catch(err => {
         const c = document.getElementById('${cardUuid}-card');
-        c.classList.add("fetch-error");
+        c?.classList.add("fetch-error");
          console.warn("[GITHUB-CARD] (Error) Loading card for ${repo} | ${cardUuid}.")
       })
     `,
